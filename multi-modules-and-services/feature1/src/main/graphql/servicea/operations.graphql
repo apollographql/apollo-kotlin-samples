@@ -1,0 +1,17 @@
+query Feature1ServiceAQuery {
+    computers {
+        id
+        ... on Computer {
+            cpu
+            year
+            releaseDate
+            screen {
+                resolution
+                ...ScreenFields
+            }
+        }
+    }
+    commonType {
+        ...CommonTypeFields
+    }
+}

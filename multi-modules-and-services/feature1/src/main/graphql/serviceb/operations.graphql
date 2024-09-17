@@ -1,0 +1,11 @@
+query Feature1ServiceBQuery {
+    animals {
+        ... on Animal {
+            ...AnimalFields
+            adoptedDate
+        }
+    }
+    commonType {
+        ...CommonTypeFields
+    }
+}

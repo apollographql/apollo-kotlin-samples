@@ -1,0 +1,30 @@
+type Query {
+    computers: [Computer!]!
+    a: String
+    commonType: CommonType
+}
+
+type Computer {
+    id: ID!
+    cpu: String!
+    year: Int!
+    screen: Screen!
+    releaseDate: Date
+}
+
+type Screen {
+    resolution: String!
+    isColor: Boolean!
+}
+
+scalar Date
+
+scalar A
+scalar B
+scalar C
+scalar D
+
+type CommonType {
+    fieldA: String
+    fieldB: String
+}

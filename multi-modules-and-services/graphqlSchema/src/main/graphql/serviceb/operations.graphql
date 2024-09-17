@@ -1,0 +1,19 @@
+query SchemaModuleServiceBQuery {
+    animals {
+        ...AnimalFields
+    }
+    b
+    commonType {
+        ...CommonTypeFields
+    }
+}
+
+fragment AnimalFields on Animal {
+    id
+    name
+}
+
+fragment CommonTypeFields on CommonType {
+    fieldB
+    fieldC
+}

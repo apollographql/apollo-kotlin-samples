@@ -1,0 +1,4 @@
+fragment CommonTypeFields on CommonType {
+    fieldA
+    fieldB
+}
