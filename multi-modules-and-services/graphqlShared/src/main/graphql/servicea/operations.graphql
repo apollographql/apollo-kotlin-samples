@@ -1,0 +1,17 @@
+query SharedModuleServiceAQuery {
+    a
+    computers {
+        id
+        ... on Computer {
+            cpu
+            year
+            screen {
+                resolution
+                ...ScreenFields
+            }
+        }
+    }
+    commonType {
+        ...CommonTypeFields
+    }
+}

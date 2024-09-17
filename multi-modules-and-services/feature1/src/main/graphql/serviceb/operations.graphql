@@ -1,0 +1,13 @@
+query Feature1ServiceBQuery {
+    animals {
+        ... on Animal {
+            # fragment defined in graphqlShared
+            ...AnimalFields
+            adoptedDate
+        }
+    }
+    commonType {
+        # fragment defined in graphqlShared
+        ...CommonTypeFields
+    }
+}

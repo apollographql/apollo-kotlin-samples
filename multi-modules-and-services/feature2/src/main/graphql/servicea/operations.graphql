@@ -1,0 +1,16 @@
+query Feature2ServiceAQuery {
+    computers {
+        id
+        ... on Computer {
+            cpu
+            year
+            releaseDate
+            screen {
+                resolution
+                ... on Screen {
+                    isColor
+                }
+            }
+        }
+    }
+}

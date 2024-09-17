@@ -1,0 +1,3 @@
+fragment ScreenFields on Screen {
+    isColor
+}
