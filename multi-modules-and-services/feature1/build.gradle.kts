@@ -12,24 +12,34 @@ dependencies {
 
 apollo {
     service("service-a") {
-        // Enable generation of metadata for use by downstream modules
-        generateApolloMetadata.set(true)
 
         srcDir("src/main/graphql/servicea")
         packageName.set("com.example.servicea")
 
-        // Dependencies on other Apollo modules
+        /*
+         * Depend on the schema and fragments from service "service-a" in module "graphqlSchema".
+         * 
+         * The `bidirectional` parameter allows to reduce the size of the generated code by telling
+         * upstream modules to only generate the used types.
+         *
+         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
+         */
         dependsOn(project(":graphqlSchema"), bidirectional = true)
     }
 
     service("service-b") {
-        // Enable generation of metadata for use by downstream modules
-        generateApolloMetadata.set(true)
 
         srcDir("src/main/graphql/serviceb")
         packageName.set("com.example.serviceb")
 
-        // Dependencies on other Apollo modules
+        /*
+         * Depend on the schema and fragments from service "service-b" in module "graphqlSchema".
+         * 
+         * The `bidirectional` parameter allows to reduce the size of the generated code by telling
+         * upstream modules to only generate the used types.
+         *
+         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
+         */
         dependsOn(project(":graphqlSchema"), bidirectional = true)
     }
 }
