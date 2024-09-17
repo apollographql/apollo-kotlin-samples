@@ -1,4 +1,4 @@
-query SchemaModuleServiceAQuery {
+query SharedModuleServiceAQuery {
     a
     computers {
         id

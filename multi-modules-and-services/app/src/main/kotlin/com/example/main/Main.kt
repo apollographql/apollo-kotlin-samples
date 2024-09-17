@@ -2,14 +2,14 @@ package com.example.main
 
 import com.example.servicea.Feature1ServiceAQuery
 import com.example.servicea.Feature2ServiceAQuery
-import com.example.servicea.SchemaModuleServiceAQuery
+import com.example.servicea.SharedModuleServiceAQuery
 import com.example.serviceb.Feature1ServiceBQuery
 import com.example.serviceb.Feature2ServiceBQuery
-import com.example.serviceb.SchemaModuleServiceBQuery
+import com.example.serviceb.SharedModuleServiceBQuery
 
 fun main() {
     // Defined in :graphqlSchema / service-a
-    SchemaModuleServiceAQuery()
+    SharedModuleServiceAQuery()
 
     // Defined in :feature1 / service-a
     Feature1ServiceAQuery()
@@ -19,7 +19,7 @@ fun main() {
 
 
     // Defined in :graphqlSchema / service-b
-    SchemaModuleServiceBQuery()
+    SharedModuleServiceBQuery()
 
     // Defined in :feature1 / service-b
     Feature1ServiceBQuery()
