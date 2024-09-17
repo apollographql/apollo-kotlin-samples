@@ -8,7 +8,7 @@ import com.example.serviceb.Feature2ServiceBQuery
 import com.example.serviceb.SharedModuleServiceBQuery
 
 fun main() {
-    // Defined in :graphqlSchema / service-a
+    // Defined in :graphqlSshared / service-a
     SharedModuleServiceAQuery()
 
     // Defined in :feature1 / service-a
@@ -18,7 +18,7 @@ fun main() {
     Feature2ServiceAQuery()
 
 
-    // Defined in :graphqlSchema / service-b
+    // Defined in :graphqlShared / service-b
     SharedModuleServiceBQuery()
 
     // Defined in :feature1 / service-b
