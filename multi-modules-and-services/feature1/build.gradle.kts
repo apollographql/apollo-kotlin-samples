@@ -12,7 +12,6 @@ dependencies {
 
 apollo {
     service("service-a") {
-
         srcDir("src/main/graphql/servicea")
         packageName.set("com.example.servicea")
 
@@ -28,7 +27,6 @@ apollo {
     }
 
     service("service-b") {
-
         srcDir("src/main/graphql/serviceb")
         packageName.set("com.example.serviceb")
 
