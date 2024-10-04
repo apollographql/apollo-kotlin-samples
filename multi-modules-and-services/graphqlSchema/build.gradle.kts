@@ -19,6 +19,14 @@ apollo {
             endpointUrl.set("https://schema-servicea.com")
             schemaFile.set(file("src/main/graphql/servicea/schema.graphqls"))
         }
+
+        /*
+         * Enable the bidirectional dependency which allows to reduce the size of the generated code by telling
+         * upstream modules to only generate the used types.
+         *
+         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
+         */
+        isADependencyOf(project(":graphqlShared"))
     }
 
     service("service-b") {
@@ -31,5 +39,13 @@ apollo {
             endpointUrl.set("https://schema-serviceb.com")
             schemaFile.set(file("src/main/graphql/serviceb/schema.graphqls"))
         }
+
+        /*
+         * Enable the bidirectional dependency which allows to reduce the size of the generated code by telling
+         * upstream modules to only generate the used types.
+         *
+         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
+         */
+        isADependencyOf(project(":graphqlShared"))
     }
 }
