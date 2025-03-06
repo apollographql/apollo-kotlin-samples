@@ -3,11 +3,6 @@ plugins {
     id("com.apollographql.apollo")
 }
 
-dependencies {
-    implementation("com.apollographql.apollo", "apollo-api")
-    testImplementation(kotlin("test"))
-}
-
 apollo {
     service("service-a") {
         // Enable generation of metadata for use by downstream modules
@@ -20,13 +15,7 @@ apollo {
             schemaFile.set(file("src/main/graphql/servicea/schema.graphqls"))
         }
 
-        /*
-         * Enable the bidirectional dependency which allows to reduce the size of the generated code by telling
-         * upstream modules to only generate the used types.
-         *
-         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
-         */
-        isADependencyOf(project(":graphqlShared"))
+        alwaysGenerateTypesMatching.set(emptyList())
     }
 
     service("service-b") {
@@ -40,12 +29,13 @@ apollo {
             schemaFile.set(file("src/main/graphql/serviceb/schema.graphqls"))
         }
 
-        /*
-         * Enable the bidirectional dependency which allows to reduce the size of the generated code by telling
-         * upstream modules to only generate the used types.
-         *
-         * See https://www.apollographql.com/docs/kotlin/advanced/multi-modules/#auto-detection-of-used-types
-         */
-        isADependencyOf(project(":graphqlShared"))
+        alwaysGenerateTypesMatching.set(emptyList())
     }
+}
+
+dependencies {
+    implementation("com.apollographql.apollo", "apollo-api")
+    testImplementation(kotlin("test"))
+
+    add("apolloServiceUsedCoordinates", project(":graphqlShared"))
 }

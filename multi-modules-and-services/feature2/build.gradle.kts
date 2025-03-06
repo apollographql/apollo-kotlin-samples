@@ -3,27 +3,32 @@ plugins {
     id("com.apollographql.apollo")
 }
 
+apollo {
+    service("service-a") {
+        // Enable generation of metadata for use by downstream modules
+        generateApolloMetadata.set(true)
+
+        srcDir("src/main/graphql/servicea")
+        packageName.set("com.example.servicea")
+
+        alwaysGenerateTypesMatching.set(emptyList())
+    }
+
+    service("service-b") {
+        // Enable generation of metadata for use by downstream modules
+        generateApolloMetadata.set(true)
+
+        srcDir("src/main/graphql/serviceb")
+        packageName.set("com.example.serviceb")
+
+        alwaysGenerateTypesMatching.set(emptyList())
+    }
+}
+
 dependencies {
     implementation("com.apollographql.apollo", "apollo-runtime")
 
     // Dependencies on other Apollo modules
     implementation(project(":graphqlShared"))
-}
-
-apollo {
-    service("service-a") {
-        srcDir("src/main/graphql/servicea")
-        packageName.set("com.example.servicea")
-
-        // Depend on the schema and fragments from service "service-a" in module "graphqlShared".
-        dependsOn(project(":graphqlShared"))
-    }
-
-    service("service-b") {
-        srcDir("src/main/graphql/serviceb")
-        packageName.set("com.example.serviceb")
-
-        // Depend on the schema and fragments from service "service-b" in module "graphqlShared".
-        dependsOn(project(":graphqlShared"))
-    }
+    add("apolloService", project(":graphqlShared"))
 }
