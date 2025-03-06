@@ -31,8 +31,11 @@ dependencies {
 
     // Dependencies on other Apollo modules
     api(project(":graphqlSchema"))
-    add("apolloService", project(":graphqlSchema"))
+    add("apolloService-a", project(":graphqlSchema"))
+    add("apolloService-b", project(":graphqlSchema"))
 
-    add("apolloServiceUsedCoordinates", project(":feature1"))
-    add("apolloServiceUsedCoordinates", project(":feature2"))
+    add("apolloService-aUsedCoordinates", project(":feature1"))
+    add("apolloService-aUsedCoordinates", project(":feature2"))
+    add("apolloService-bUsedCoordinates", project(":feature1"))
+    add("apolloService-bUsedCoordinates", project(":feature2"))
 }

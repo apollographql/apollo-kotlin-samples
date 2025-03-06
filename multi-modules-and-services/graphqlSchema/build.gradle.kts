@@ -37,5 +37,6 @@ dependencies {
     implementation("com.apollographql.apollo", "apollo-api")
     testImplementation(kotlin("test"))
 
-    add("apolloServiceUsedCoordinates", project(":graphqlShared"))
+    add("apolloService-aUsedCoordinates", project(":graphqlShared"))
+    add("apolloService-bUsedCoordinates", project(":graphqlShared"))
 }

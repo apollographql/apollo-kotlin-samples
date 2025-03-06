@@ -30,5 +30,6 @@ dependencies {
 
     // Dependencies on other Apollo modules
     implementation(project(":graphqlShared"))
-    add("apolloService", project(":graphqlShared"))
+    add("apolloService-a", project(":graphqlShared"))
+    add("apolloService-b", project(":graphqlShared"))
 }
