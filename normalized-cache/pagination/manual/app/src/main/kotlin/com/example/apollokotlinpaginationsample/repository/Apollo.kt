@@ -5,16 +5,13 @@ import com.apollographql.apollo.api.Optional
 import com.apollographql.apollo.debugserver.ApolloDebugServer
 import com.apollographql.cache.normalized.FetchPolicy
 import com.apollographql.cache.normalized.api.CacheKey
-import com.apollographql.cache.normalized.api.TypePolicyCacheKeyGenerator
 import com.apollographql.cache.normalized.apolloStore
 import com.apollographql.cache.normalized.fetchPolicy
 import com.apollographql.cache.normalized.memory.MemoryCacheFactory
-import com.apollographql.cache.normalized.normalizedCache
 import com.apollographql.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.example.apollokotlinpaginationsample.Application
 import com.example.apollokotlinpaginationsample.BuildConfig
 import com.example.apollokotlinpaginationsample.graphql.RepositoryListQuery
-import com.example.apollokotlinpaginationsample.graphql.cache.Cache
 import com.example.apollokotlinpaginationsample.graphql.cache.Cache.cache
 
 private const val SERVER_URL = "https://api.github.com/graphql"
@@ -49,7 +46,6 @@ val apolloClient: ApolloClient by lazy {
             if (BuildConfig.DEBUG) ApolloDebugServer.registerApolloClient(it)
         }
 }
-
 
 suspend fun fetchAndMergeNextPage() {
     // 1. Get the current list from the cache

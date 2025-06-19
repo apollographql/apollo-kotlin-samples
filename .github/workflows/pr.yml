@@ -19,4 +19,8 @@ jobs:
           distribution: 'temurin'
           java-version: 17
       - run: |
-          for dir in */; do (cd "$dir" && ./gradlew build); done
+          set -e
+          find . -name gradlew -type f -print | while read -r file; do
+            (cd "$(dirname "$file")" && ./gradlew build)
+          done
+
