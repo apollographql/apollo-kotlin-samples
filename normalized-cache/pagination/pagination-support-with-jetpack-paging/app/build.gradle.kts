@@ -8,7 +8,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.apollographql.apollo").version("4.3.1")
-    id("org.jetbrains.kotlin.plugin.compose").version("2.1.21")
+    id("org.jetbrains.kotlin.plugin.compose").version("2.2.0")
 }
 
 android {
@@ -65,7 +65,7 @@ apollo {
     service("main") {
         packageName.set("com.example.apollokotlinpaginationsample.graphql")
 
-        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.4-SNAPSHOT") {
+        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.4") {
             argument("packageName", packageName.get())
         }
 
@@ -89,7 +89,7 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-debug-server")
 
     implementation("com.apollographql.apollo:apollo-runtime")
-    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.4-SNAPSHOT")
+    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.4")
 
     implementation("androidx.paging:paging-runtime-ktx:3.3.6")
     implementation("androidx.paging:paging-compose:3.3.6")
