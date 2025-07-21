@@ -1,6 +1,7 @@
-# Browser sample
+# Browser sample (Wasm)
 
-This samples demonstrates how to use the [Apollo SQL normalized cache](https://github.com/apollographql/apollo-kotlin-normalized-cache) in a browser application.
+This samples demonstrates how to use the [Apollo SQL normalized cache](https://github.com/apollographql/apollo-kotlin-normalized-cache) in a browser application,
+using Kotlin Wasm and Compose Web (Canvas).
 
 It displays a list of repositories fetched from the [GitHub GraphQL API](https://docs.github.com/en/graphql).
 

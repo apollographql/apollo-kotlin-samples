@@ -1,6 +1,7 @@
-# Browser sample
+# Browser sample (Js)
 
-This samples demonstrates how to use the [Apollo SQL normalized cache](https://github.com/apollographql/apollo-kotlin-normalized-cache) in a browser application.
+This samples demonstrates how to use the [Apollo SQL normalized cache](https://github.com/apollographql/apollo-kotlin-normalized-cache) in a browser application,
+using Kotlin JS and Compose Html.
 
 It displays a list of repositories fetched from the [GitHub GraphQL API](https://docs.github.com/en/graphql).
 
