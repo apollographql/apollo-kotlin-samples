@@ -54,7 +54,7 @@ kotlin {
 
         // Apollo
         implementation("com.apollographql.apollo:apollo-runtime")
-        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.4")
+        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.7")
 
         // sqlite.js / SQLDelight
         implementation("app.cash.sqldelight:web-worker-driver:2.1.0")
@@ -76,8 +76,8 @@ apollo {
     packageName.set("com.example.browsersample.graphql")
 
     @OptIn(ApolloExperimental::class)
-    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.4") {
-      argument("packageName", packageName.get())
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.7") {
+      argument("com.apollographql.cache.packageName", packageName.get())
     }
 
     introspection {

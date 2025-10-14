@@ -1,14 +1,15 @@
 @file:OptIn(ApolloExperimental::class)
 
 import com.apollographql.apollo.annotations.ApolloExperimental
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 fun prop(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.apollographql.apollo").version("4.3.1")
-    id("org.jetbrains.kotlin.plugin.compose").version("2.2.0")
+    id("com.apollographql.apollo")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -45,10 +46,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
     buildFeatures {
         compose = true
         buildConfig = true
@@ -61,12 +58,18 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_1_8)
+    }
+}
+
 apollo {
     service("main") {
         packageName.set("com.example.apollokotlinpaginationsample.graphql")
 
-        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.4") {
-            argument("packageName", packageName.get())
+        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.7") {
+            argument("com.apollographql.cache.packageName", packageName.get())
         }
 
         introspection {
@@ -78,18 +81,18 @@ apollo {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.1")
-    implementation("androidx.activity:activity-compose:1.10.1")
-    implementation(platform("androidx.compose:compose-bom:2025.06.01"))
+    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
+    implementation("androidx.activity:activity-compose:1.11.0")
+    implementation(platform("androidx.compose:compose-bom:2025.10.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("com.apollographql.apollo:apollo-debug-server")
 
     implementation("com.apollographql.apollo:apollo-runtime")
-    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.4")
+    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.7")
+    implementation("com.apollographql.apollo:apollo-debug-server")
 
     implementation("androidx.paging:paging-runtime-ktx:3.3.6")
     implementation("androidx.paging:paging-compose:3.3.6")

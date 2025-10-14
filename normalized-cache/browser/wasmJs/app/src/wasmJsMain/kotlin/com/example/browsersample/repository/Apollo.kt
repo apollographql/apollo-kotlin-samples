@@ -47,6 +47,7 @@ val apolloClient: ApolloClient by lazy {
     .build()
 }
 
+@OptIn(ExperimentalWasmJsInterop::class)
 fun jsWorker(): Worker = js("""new Worker(new URL("sqljs.opfs.worker.js", import.meta.url))""")
 
 suspend fun fetchAndMergeNextPage() {
