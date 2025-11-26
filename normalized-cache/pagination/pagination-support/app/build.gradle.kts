@@ -68,7 +68,7 @@ apollo {
     service("main") {
         packageName.set("com.example.apollokotlinpaginationsample.graphql")
 
-        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.8") {
+        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-beta.0") {
             argument("com.apollographql.cache.packageName", packageName.get())
         }
 
@@ -82,16 +82,16 @@ apollo {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
-    implementation("androidx.activity:activity-compose:1.11.0")
-    implementation(platform("androidx.compose:compose-bom:2025.11.00"))
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
+    implementation("androidx.activity:activity-compose:1.12.0")
+    implementation(platform("androidx.compose:compose-bom:2025.11.01"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
     implementation("com.apollographql.apollo:apollo-runtime")
-    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.8")
+    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-beta.0")
     implementation("com.apollographql.apollo:apollo-debug-server")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
