@@ -43,6 +43,9 @@ kotlin {
       kotlin.srcDir(generateBuildConfigTask)
 
       dependencies {
+        // Standard library
+        implementation(kotlin("stdlib-wasm-js"))
+
         // Coroutines
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
@@ -54,7 +57,7 @@ kotlin {
 
         // Apollo
         implementation("com.apollographql.apollo:apollo-runtime")
-        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-alpha.7")
+        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0-beta.1")
 
         // sqlite.js / SQLDelight
         implementation("app.cash.sqldelight:web-worker-driver:2.1.0")
@@ -76,7 +79,7 @@ apollo {
     packageName.set("com.example.browsersample.graphql")
 
     @OptIn(ApolloExperimental::class)
-    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-alpha.7") {
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0-beta.1") {
       argument("com.apollographql.cache.packageName", packageName.get())
     }
 
