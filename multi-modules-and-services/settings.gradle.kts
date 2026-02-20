@@ -1,10 +1,12 @@
+@file:Suppress("UnstableApiUsage")
+
 include(":graphqlSchema", ":graphqlShared", ":feature1", ":feature2", ":app")
 
 pluginManagement {
     repositories {
 //        mavenLocal()
 //        maven {
-//            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+//            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
 //        }
         google()
         mavenCentral()
@@ -17,7 +19,7 @@ dependencyResolutionManagement {
     repositories {
 //        mavenLocal()
 //        maven {
-//            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+//            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
 //        }
         google()
         mavenCentral()
