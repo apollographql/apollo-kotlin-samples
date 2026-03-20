@@ -60,7 +60,7 @@ kotlin {
         implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0")
 
         // sqlite.js / SQLDelight
-        implementation("app.cash.sqldelight:web-worker-driver:2.1.0")
+        implementation("app.cash.sqldelight:web-worker-driver:2.3.2")
         implementation(devNpm("copy-webpack-plugin", "9.1.0"))
         implementation(npm("sql.js", "1.8.0"))
 
