@@ -49,7 +49,7 @@ kotlin {
 
         // Compose
         implementation("org.jetbrains.compose.runtime:runtime:1.8.0")
-        implementation("org.jetbrains.compose.html:html-core:1.8.0")
+        implementation("org.jetbrains.compose.html:html-core:1.10.3")
 
         // Apollo
         implementation("com.apollographql.apollo:apollo-runtime")
