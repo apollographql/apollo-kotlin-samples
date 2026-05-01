@@ -64,7 +64,7 @@ kotlin {
         implementation(devNpm("copy-webpack-plugin", "9.1.0"))
         implementation(npm("sql.js", "1.8.0"))
 
-        implementation("org.jetbrains.kotlinx:kotlinx-browser:0.3")
+        implementation("org.jetbrains.kotlinx:kotlinx-browser:0.5.0")
         // Commented out as we use our own custom Worker that loads/saves the db file via OPFS.
         // See `src/jsMain/resources/sqljs.opfs.worker.js`
         // Uncomment to use the default SQLDelight worker instead, which stays in memory.
