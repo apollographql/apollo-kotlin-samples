@@ -48,7 +48,7 @@ kotlin {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
         // Compose
-        implementation("org.jetbrains.compose.runtime:runtime:1.8.0")
+        implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
         implementation("org.jetbrains.compose.html:html-core:1.8.0")
 
         // Apollo
