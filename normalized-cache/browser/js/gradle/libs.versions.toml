@@ -1,0 +1,22 @@
+[versions]
+kotlin = "2.3.21"
+compose = "1.8.0"
+apollo = "5.0.0"
+apolloCache = "1.0.2"
+coroutines = "1.10.2"
+sqldelight = "2.1.0"
+
+[libraries]
+kotlin-stdlib-js = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-js", version.ref = "kotlin" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+compose-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "compose" }
+compose-html-core = { group = "org.jetbrains.compose.html", name = "html-core", version.ref = "compose" }
+apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime" }
+apollo-cache-sqlite = { group = "com.apollographql.cache", name = "normalized-cache-sqlite", version.ref = "apolloCache" }
+sqldelight-web-worker-driver = { group = "app.cash.sqldelight", name = "web-worker-driver", version.ref = "sqldelight" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }

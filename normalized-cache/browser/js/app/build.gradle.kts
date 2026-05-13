@@ -4,10 +4,10 @@ import java.io.File
 fun prop(key: String) = project.findProperty(key).toString()
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.compose")
-  kotlin("plugin.compose")
-  id("com.apollographql.apollo")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.jetbrains.compose)
+  alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.apollo)
 }
 
 // Generate a BuildConfig.kt file with a constant for the GitHub OAuth key.
@@ -42,21 +42,21 @@ kotlin {
 
       dependencies {
         // Standard library
-        implementation(kotlin("stdlib-js"))
+        implementation(libs.kotlin.stdlib.js)
 
         // Coroutines
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+        implementation(libs.kotlinx.coroutines.core)
 
         // Compose
-        implementation("org.jetbrains.compose.runtime:runtime:1.8.0")
-        implementation("org.jetbrains.compose.html:html-core:1.8.0")
+        implementation(libs.compose.runtime)
+        implementation(libs.compose.html.core)
 
         // Apollo
-        implementation("com.apollographql.apollo:apollo-runtime")
-        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0")
+        implementation(libs.apollo.runtime)
+        implementation(libs.apollo.cache.sqlite)
 
         // sqlite.js / SQLDelight
-        implementation("app.cash.sqldelight:web-worker-driver:2.1.0")
+        implementation(libs.sqldelight.web.worker.driver)
         implementation(devNpm("copy-webpack-plugin", "9.1.0"))
         implementation(npm("sql.js", "1.8.0"))
 
@@ -73,7 +73,7 @@ apollo {
   service("main") {
     packageName.set("com.example.browsersample.graphql")
 
-    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.2")
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:${libs.versions.apolloCache.get()}")
     pluginArgument("com.apollographql.cache.packageName", packageName.get())
 
     introspection {
