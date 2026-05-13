@@ -79,9 +79,8 @@ apollo {
     packageName.set("com.example.browsersample.graphql")
 
     @OptIn(ApolloExperimental::class)
-    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0") {
-      argument("com.apollographql.cache.packageName", packageName.get())
-    }
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.2")
+    pluginArgument("com.apollographql.cache.packageName", packageName.get())
 
     introspection {
       endpointUrl.set("https://api.github.com/graphql")
