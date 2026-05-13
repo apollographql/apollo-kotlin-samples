@@ -1,102 +1,92 @@
 @file:OptIn(ApolloExperimental::class)
 
 import com.apollographql.apollo.annotations.ApolloExperimental
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 fun prop(key: String) = project.findProperty(key).toString()
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.apollographql.apollo")
-    id("org.jetbrains.kotlin.plugin.compose")
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.compose)
+  id("com.apollographql.apollo")
 }
 
 android {
-    namespace = "com.example.apollokotlinpaginationsample"
-    compileSdk = 36
-
-    defaultConfig {
-        applicationId = "com.example.apollokotlinpaginationsample"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-
-        buildConfigField("String", "GITHUB_OAUTH_KEY", "\"${prop("githubOauthKey")}\"")
+  namespace = "com.example.apollokotlinpaginationsample"
+  compileSdk {
+    version = release(36) {
+      minorApiLevel = 1
     }
+  }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
+  defaultConfig {
+    applicationId = "com.example.apollokotlinpaginationsample"
+    minSdk = 24
+    targetSdk = 37
+    versionCode = 1
+    versionName = "1.0"
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
+    buildConfigField("String", "GITHUB_OAUTH_KEY", "\"${prop("githubOauthKey")}\"")
+  }
 
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+  buildTypes {
+    release {
+      isMinifyEnabled = false
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
     }
-}
+  }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_1_8)
-    }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+  }
+
+  buildFeatures {
+    compose = true
+    buildConfig = true
+  }
 }
 
 apollo {
-    service("main") {
-        packageName.set("com.example.apollokotlinpaginationsample.graphql")
+  service("main") {
+    packageName.set("com.example.apollokotlinpaginationsample.graphql")
 
-        plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0") {
-            argument("com.apollographql.cache.packageName", packageName.get())
-        }
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:${libs.versions.apolloCache.get()}")
+    pluginArgument("com.apollographql.cache.packageName", packageName.get())
 
-        introspection {
-            endpointUrl.set("https://api.github.com/graphql")
-            schemaFile.set(file("src/main/graphql/schema.graphqls"))
-            headers.put("Authorization", "Bearer ${prop("githubOauthKey")}")
-        }
+    introspection {
+      endpointUrl.set("https://api.github.com/graphql")
+      schemaFile.set(file("src/main/graphql/schema.graphqls"))
+      headers.put("Authorization", "Bearer ${prop("githubOauthKey")}")
     }
+  }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-    implementation("androidx.activity:activity-compose:1.12.1")
-    implementation(platform("androidx.compose:compose-bom:2025.12.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui)
+  implementation(libs.androidx.compose.ui.graphics)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.lifecycle.runtime.ktx)
+  testImplementation(libs.junit)
+  androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+  androidTestImplementation(libs.androidx.espresso.core)
+  androidTestImplementation(libs.androidx.junit)
+  debugImplementation(libs.androidx.compose.ui.test.manifest)
+  debugImplementation(libs.androidx.compose.ui.tooling)
 
-    implementation("com.apollographql.apollo:apollo-runtime")
-    implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0")
-    implementation("com.apollographql.apollo:apollo-debug-server")
+  implementation(libs.apollo.runtime)
+  implementation(libs.apollo.cache.sqlite)
+  implementation(libs.apollo.debug.server)
 
-    implementation("androidx.paging:paging-runtime-ktx:3.3.6")
-    implementation("androidx.paging:paging-compose:3.3.6")
-
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+  implementation(libs.androidx.paging.runtime.ktx)
+  implementation(libs.androidx.paging.compose)
 }

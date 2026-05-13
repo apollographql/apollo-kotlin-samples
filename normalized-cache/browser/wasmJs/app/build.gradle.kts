@@ -5,10 +5,10 @@ import java.io.File
 fun prop(key: String) = project.findProperty(key).toString()
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.compose")
-  kotlin("plugin.compose")
-  id("com.apollographql.apollo")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.jetbrains.compose)
+  alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.apollo)
 }
 
 // Generate a BuildConfig.kt file with a constant for the GitHub OAuth key.
@@ -44,10 +44,10 @@ kotlin {
 
       dependencies {
         // Standard library
-        implementation(kotlin("stdlib-wasm-js"))
+        implementation(libs.kotlin.stdlib.wasm.js)
 
         // Coroutines
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+        implementation(libs.kotlinx.coroutines.core)
 
         // Compose
         implementation(compose.runtime)
@@ -56,15 +56,15 @@ kotlin {
         implementation(compose.components.resources)
 
         // Apollo
-        implementation("com.apollographql.apollo:apollo-runtime")
-        implementation("com.apollographql.cache:normalized-cache-sqlite:1.0.0")
+        implementation(libs.apollo.runtime)
+        implementation(libs.apollo.cache.sqlite)
 
         // sqlite.js / SQLDelight
-        implementation("app.cash.sqldelight:web-worker-driver:2.1.0")
+        implementation(libs.sqldelight.web.worker.driver)
         implementation(devNpm("copy-webpack-plugin", "9.1.0"))
         implementation(npm("sql.js", "1.8.0"))
 
-        implementation("org.jetbrains.kotlinx:kotlinx-browser:0.3")
+        implementation(libs.kotlinx.browser)
         // Commented out as we use our own custom Worker that loads/saves the db file via OPFS.
         // See `src/jsMain/resources/sqljs.opfs.worker.js`
         // Uncomment to use the default SQLDelight worker instead, which stays in memory.
@@ -79,9 +79,8 @@ apollo {
     packageName.set("com.example.browsersample.graphql")
 
     @OptIn(ApolloExperimental::class)
-    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:1.0.0") {
-      argument("com.apollographql.cache.packageName", packageName.get())
-    }
+    plugin("com.apollographql.cache:normalized-cache-apollo-compiler-plugin:${libs.versions.apolloCache.get()}")
+    pluginArgument("com.apollographql.cache.packageName", packageName.get())
 
     introspection {
       endpointUrl.set("https://api.github.com/graphql")

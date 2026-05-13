@@ -1,23 +1,33 @@
 pluginManagement {
-    repositories {
-        mavenLocal()
-        maven {
-            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-        }
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+  repositories {
+    mavenLocal()
+    maven {
+      url = uri("https://central.sonatype.com/repository/maven-snapshots")
     }
+    google {
+      content {
+        includeGroupByRegex("com\\.android.*")
+        includeGroupByRegex("com\\.google.*")
+        includeGroupByRegex("androidx.*")
+      }
+    }
+    mavenCentral()
+    gradlePluginPortal()
+  }
+}
+plugins {
+  id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 dependencyResolutionManagement {
-    repositories {
-        mavenLocal()
-        maven {
-            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-        }
-        google()
-        mavenCentral()
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    mavenLocal()
+    maven {
+      url = uri("https://central.sonatype.com/repository/maven-snapshots")
     }
+    google()
+    mavenCentral()
+  }
 }
 
 rootProject.name = "Apollo Kotlin Pagination Sample"
