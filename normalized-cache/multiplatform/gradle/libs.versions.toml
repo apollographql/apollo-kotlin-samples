@@ -1,0 +1,13 @@
+[versions]
+kotlin = "2.3.21"
+#kotlin = "2.4.0-RC2"
+apollo = "5.0.0"
+apolloCache = "1.0.3"
+
+[plugins]
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
+
+[libraries]
+apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apollo" }
+apollo-cache-sqlite = { group = "com.apollographql.cache", name = "normalized-cache-sqlite", version.ref = "apolloCache" }

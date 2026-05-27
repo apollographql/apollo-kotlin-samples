@@ -1,0 +1,11 @@
+.DS_Store
+build
+out
+.gradle
+*.iml
+.idea/*
+!.idea/copyright
+!.idea/codeStyles
+.kotlin
+go.sh
+versions.properties
