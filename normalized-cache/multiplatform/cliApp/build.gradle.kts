@@ -16,8 +16,12 @@ kotlin {
     binaries {
       executable {
         entryPoint = "main"
-        disableNativeCache(DisableCacheInKotlinVersion.`2_3_21`, "")
       }
+    }
+
+    // Workaround for https://youtrack.jetbrains.com/issue/KT-86570
+    binaries.all {
+      freeCompilerArgs += "-Xbinary=genericSafeCasts=false"
     }
   }
 
