@@ -4,7 +4,7 @@ compose = "1.8.0"
 apollo = "5.0.1"
 apolloCache = "1.0.6"
 coroutines = "1.10.2"
-sqldelight = "2.1.0"
+sqldelight = "2.3.2"
 kotlinxBrowser = "0.3"
 
 [libraries]
