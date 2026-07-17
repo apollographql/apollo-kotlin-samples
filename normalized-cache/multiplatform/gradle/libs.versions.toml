@@ -1,8 +1,8 @@
 [versions]
 kotlin = "2.3.21"
 #kotlin = "2.4.0-RC2"
-apollo = "5.0.0"
-apolloCache = "1.0.3"
+apollo = "5.0.1"
+apolloCache = "1.0.6"
 
 [plugins]
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
