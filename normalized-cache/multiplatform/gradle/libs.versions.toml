@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.3.21"
 #kotlin = "2.4.0-RC2"
-apollo = "5.0.1"
+apollo = "5.1.0"
 apolloCache = "1.0.7"
 
 [plugins]
