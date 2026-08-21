@@ -3,7 +3,7 @@ kotlin = "2.3.21"
 compose = "1.8.0"
 apollo = "5.1.0"
 apolloCache = "1.0.7"
-coroutines = "1.10.2"
+coroutines = "1.11.0"
 sqldelight = "2.1.0"
 
 [libraries]
