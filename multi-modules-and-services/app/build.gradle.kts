@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation("com.apollographql.apollo", "apollo-runtime", "4.0.0")
+    implementation("com.apollographql.apollo", "apollo-runtime", "4.4.3")
 
     // Dependencies on other Apollo modules
     implementation(project(":graphqlShared"))
